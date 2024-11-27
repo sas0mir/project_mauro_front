@@ -31,3 +31,20 @@
     color: #3f798d;
     font-weight: 600;
 }
+.navbar-drop-container {
+    display: block;
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    left: 0;
+    right: 0;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+//lg
+@media (min-width: 1024px) {
+    .navbar-drop-container {
+        visibility: hidden;
+    }
+}
