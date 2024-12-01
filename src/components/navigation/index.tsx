@@ -13,12 +13,12 @@ function Navigation() {
         <>
             <div className="navbar-drop-container bg-slate-900 transition">
                 <ul className="text-center text-xl p-20">
-                    <Link to="/issues">
+                    <NavLink to="/issues">
                         <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Issues</li>
-                    </Link>
-                    <Link to="/logs">
+                    </NavLink>
+                    <NavLink to="/logs">
                         <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Logs</li>
-                    </Link>
+                    </NavLink>
                 </ul>
             </div>
         </>
@@ -49,6 +49,14 @@ function Navigation() {
         }
       >
         Video
+      </NavLink>
+      <NavLink
+        to="/settings"
+        className={({ isActive }) =>
+          isActive ? styles.navigation_link_active : styles.navigation_link
+        }
+      >
+        Settings
       </NavLink>
     </nav>
   )

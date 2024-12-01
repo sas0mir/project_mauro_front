@@ -8,6 +8,7 @@ import Videos from './pages/vidpage/index.tsx'
 import { Route, Routes, BrowserRouter } from 'react-router'
 import { Provider } from 'react-redux'
 import store from './store/store.ts'
+import Settingspage from './pages/settings/index.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
           <Route index element={<Homepage />} />
           <Route path='lib' element={<Library />} />
           <Route path='vid' element={<Videos />} />
+          <Route path='settings' element={<Settingspage />} />
         </Route>
       </Routes>
     </BrowserRouter>
