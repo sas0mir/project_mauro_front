@@ -7,7 +7,7 @@ import Library from './pages/libpage/index.tsx'
 import Videos from './pages/vidpage/index.tsx'
 import { Route, Routes, BrowserRouter } from 'react-router'
 import { Provider } from 'react-redux'
-import store from './store/store.ts'
+import { store } from './store/store.ts'
 import Settingspage from './pages/settings/index.tsx'
 
 createRoot(document.getElementById('root')!).render(

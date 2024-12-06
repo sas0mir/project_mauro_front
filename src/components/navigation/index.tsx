@@ -1,31 +1,43 @@
-import { useState } from 'react'
+//import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../../store/store'
 import { NavLink } from 'react-router'
 import styles from './navigation.module.scss'
-import { FaTimes, FaGithub } from "react-icons/fa"
-import { CiMenuFries } from "react-icons/ci";
+import classNames from 'classnames'
+//import { FaTimes, FaGithub } from "react-icons/fa"
+//import { CiMenuFries } from "react-icons/ci";
 
 function Navigation() {
 
-    const [navClick, setNavClick] = useState(false);
-    const handleNavClick = () => setNavClick(!navClick);
+    //const [navClick, setNavClick] = useState(false);
+    const theme = useSelector((state: RootState) => state.settings.theme);
 
-  const dropContent = (
-        <>
-            <div className="navbar-drop-container bg-slate-900 transition">
-                <ul className="text-center text-xl p-20">
-                    <NavLink to="/issues">
-                        <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Issues</li>
-                    </NavLink>
-                    <NavLink to="/logs">
-                        <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Logs</li>
-                    </NavLink>
-                </ul>
-            </div>
-        </>
-    )
+    //const handleNavClick = () => setNavClick(!navClick);
+
+  // const dropContent = (
+  //       <>
+  //           <div className="navbar-drop-container bg-slate-900 transition">
+  //               <ul className="text-center text-xl p-20">
+  //                   <NavLink to="/issues">
+  //                       <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Issues</li>
+  //                   </NavLink>
+  //                   <NavLink to="/logs">
+  //                       <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Logs</li>
+  //                   </NavLink>
+  //               </ul>
+  //           </div>
+  //       </>
+  //   )
 
   return (
-    <nav className={styles.navigation_container}>
+    <nav className={classNames(
+      styles.navigation_container,
+      {
+        [styles.container_default]: theme === 'default',
+        [styles.container_dark]: theme === 'dark',
+        [styles.container_light]: theme === 'light'
+      }
+    )}>
       <NavLink
         to="/"
         className={({ isActive }) => 
