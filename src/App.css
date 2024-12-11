@@ -5,3 +5,20 @@
   height: 100%;
   background-color: slategrey;
 }
+
+.app_container main {
+  padding-top: 5vh;
+}
+/* lg */
+@media (min-width: 1024px) {
+  .app_container main {
+    padding-top: 7vh;
+  }
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .app_container main {
+    padding-top: 6vh;
+  }
+}

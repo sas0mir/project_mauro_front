@@ -10,15 +10,17 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
 import Settingspage from './pages/settings/index.tsx'
 
+const baseUrl = import.meta.env.VITE_RELATIVE_BASE_URL;
+
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<App/>}>
+        <Route path='/project_mauro_front/' element={<App/>}>
           <Route index element={<Homepage />} />
-          <Route path='lib' element={<Library />} />
-          <Route path='vid' element={<Videos />} />
-          <Route path='settings' element={<Settingspage />} />
+          <Route path={`${baseUrl}/lib`} element={<Library />} />
+          <Route path={`${baseUrl}/vid`} element={<Videos />} />
+          <Route path={`${baseUrl}/settings`} element={<Settingspage />} />
         </Route>
       </Routes>
     </BrowserRouter>

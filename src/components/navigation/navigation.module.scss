@@ -1,20 +1,58 @@
+@use '../../variables' as vars;
+
 .navigation_container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     margin: 0;
     padding: 1rem;
-
-    max-height: 5%;
+    height: 5vh;
     width: 100%;
     justify-content: flex-start;
-    background-color: rgb(56, 56, 56);
+    -webkit-box-shadow: 0px 6px 15px 5px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 6px 15px 5px rgba(0,0,0,0.5);
+    box-shadow: 0px 6px 15px 5px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+.nav_bg_default {
+    background-color: vars.$color-nav-default;
+    color: vars.$color-text-default;
+}
+.nav_bg_earth {
+    background-color: vars.$color-nav-earth;
+    color: vars.$color-text-earth;
+}
+.nav_bg_vintage {
+    background-color: vars.$color-nav-vintage;
+    color: vars.$color-text-vintage;
+}
+.nav_bg_cosmic {
+    background-color: vars.$color-nav-cosmic;
+    color: vars.$color-text-cosmic;
+}
+.nav_bg_warm {
+    background-color: vars.$color-nav-warm;
+    color: vars.$color-text-warm;
+}
+.nav_bg_modern {
+    background-color: vars.$color-nav-modern;
+    color: vars.$color-text-modern;
+}
+.navigation_links {
+    position: relative;
+    display: none;
+    flex: 1 1 0%;
+    justify-content: flex-end;
+    font-weight: 400;
 }
 .navigation_link {
     position: relative;
     display: block;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
-    font-size: 25pt;
+    font-size: 15pt;
     padding: 1rem;
     margin: 0 1rem;
     color: white;
@@ -25,11 +63,17 @@
     display: block;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
-    font-size: 25pt;
+    font-size: 15pt;
     padding: 0.5rem;
     margin: 0 1rem;
     color: #3f798d;
     font-weight: 600;
+}
+.navigation_btn {
+    display: block;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 }
 .navbar-drop-container {
     display: block;
@@ -44,7 +88,30 @@
 }
 //lg
 @media (min-width: 1024px) {
+    .navigation_container {
+        height: 7vh;
+    }
+    .navigation_links {
+        display: flex;
+    }
     .navbar-drop-container {
-        visibility: hidden;
+        display: none;
+    }
+}
+
+//md
+@media (min-width: 768px) {
+    .navigation_links {
+        display: flex;
+    }
+}
+
+//sm
+@media (min-width: 640px) {
+    .navigation_container {
+        height: 6vh;
+    }
+    .navigation_btn {
+        display: none;
     }
 }
