@@ -7,13 +7,20 @@
 }
 
 .app_container main {
-  padding-top: 5vh;
+  padding-top: 6vh;
 }
 /* lg */
 @media (min-width: 1024px) {
   .app_container main {
     padding-top: 7vh;
   }
+}
+
+/* md */
+@media (min-width: 768px) {
+    .app_container main {
+        padding: 6.5vh;
+    }
 }
 
 /* sm */
