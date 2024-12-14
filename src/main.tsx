@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path='/project_mauro_front/' element={<App/>}>
-          <Route index element={<Homepage />} />
+          <Route index path={`${baseUrl}/main`} element={<Homepage />} />
           <Route path={`${baseUrl}/lib`} element={<Library />} />
           <Route path={`${baseUrl}/vid`} element={<Videos />} />
           <Route path={`${baseUrl}/settings`} element={<Settingspage />} />

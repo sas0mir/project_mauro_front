@@ -4,8 +4,7 @@ import type { RootState } from '../../store/store'
 import { NavLink } from 'react-router'
 import styles from './navigation.module.scss'
 import classNames from 'classnames'
-import { FaTimes, FaAlignJustify } from "react-icons/fa"
-import { LuCross } from "react-icons/lu";
+import { FaTimes, FaAlignJustify, FaRegUser } from "react-icons/fa"
 
 function Navigation() {
 
@@ -45,29 +44,46 @@ function Navigation() {
                   }
                   )}>
                     <NavLink
-                      to={`${baseUrl}/`}
-                      className={({ isActive }) => 
+                      to={`${baseUrl}/main`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) => {
+                        return isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}>Home</li>
+                    </NavLink>
+                    <NavLink
+                      to={`${baseUrl}/lib`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) =>
                         isActive ? styles.navigation_link_active : styles.navigation_link
                       }
                     >
-                      <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Home</li>
+                      <li className={styles.navbar_drop_list_item}>Biblioteca</li>
                     </NavLink>
-                    <NavLink to="/issues">
-                        
+                    <NavLink
+                      to={`${baseUrl}/vid`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) =>
+                        isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}>Video</li>
                     </NavLink>
-                    <NavLink to="/logs">
-                        <li className="my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded">Logs</li>
+                    <NavLink
+                      to={`${baseUrl}/settings`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) =>
+                        isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}>Impostazioni</li>
                     </NavLink>
                 </ul>
             </div>
         </>
     )
-  // { value: "default", label: "Default" },
-  //   { value: "earth", label: "Earth" },
-  //   { value: "vintage", label: "Vintage" },
-  //   { value: "cosmic", label: "Cosmic" },
-  //   { value: "warm", label: "Warm" },
-  //   { value: "modern", label: "Modern" },
   return (
     <nav className={classNames(
       styles.navigation_container,
@@ -82,7 +98,7 @@ function Navigation() {
     )}>
       <div className={styles.navigation_links}>
         <NavLink
-          to={`${baseUrl}/`}
+          to={`${baseUrl}/main`}
           className={({ isActive }) => 
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
@@ -95,7 +111,7 @@ function Navigation() {
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
         >
-          Libri
+          Biblioteca
         </NavLink>
         <NavLink
           to={`${baseUrl}/vid`}
@@ -111,7 +127,7 @@ function Navigation() {
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
         >
-          Settings
+          Impostazioni
         </NavLink>
       </div>
       
@@ -130,9 +146,19 @@ function Navigation() {
     )} onClick={handleNavClick}>
           {navClick ? <FaTimes /> : <FaAlignJustify />}
       </button>
-      <div>
+      <div className={classNames(
+        styles.navigation_avatar,
+        {
+          [styles.nav_border_default]: theme === 'default',
+          [styles.nav_border_earth]: theme === 'earth',
+          [styles.nav_border_vintage]: theme === 'vintage',
+          [styles.nav_border_cosmic]: theme === 'cosmic',
+          [styles.nav_border_warm]: theme === 'warm',
+          [styles.nav_border_modern]: theme === 'modern'
+        }
+        )}>
         {/* тут аватарка юзера c выпадающим меню или иконка если нет */}
-        <LuCross />
+        <FaRegUser />
       </div>
     </nav>
   )
