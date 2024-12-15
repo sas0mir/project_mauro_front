@@ -133,7 +133,7 @@
     position: relative;
     display: none;
     flex: 1 1 0%;
-    justify-content: flex-end;
+    justify-content: flex-start;
     font-weight: 400;
 }
 .navigation_link {
@@ -147,10 +147,10 @@
     // color: white;
     font-weight: 600;
     text-decoration: none;
-    transition: all 300ms ease-out;
+    transition: all 100ms ease-out;
     &:hover {
-        transition: all 300ms ease-in;
-        transform: scale(1.1);
+        transition: all 100ms ease-in;
+        transform: scale(1.05);
         opacity: .7;
     }
 }
@@ -180,7 +180,7 @@
 .navbar_drop_container {
     display: block;
     position: absolute;
-    top: 4rem;
+    top: 5rem;
     width: auto;
     left: 0;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -199,10 +199,10 @@
     padding-top: 1rem; /* 16px */
     padding-bottom: 1rem; /* 16px */
     border-bottom-width: 1px;
-    :hover {
+    &:hover {
         border-radius: 0.25rem;
     }
-    :active {
+    &:active {
         border-radius: 0.25rem;
     }
     // border-slate-800 hover:bg-slate-800 hover:rounded
@@ -218,6 +218,23 @@
     justify-items: center;
     justify-content: center;
     font-size: 2rem;
+    transition: all 100ms ease-out;
+    &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(1.05);
+        opacity: .7;
+        cursor: pointer;
+    }
+}
+.umenu_drop_container {
+    display: block;
+    position: absolute;
+    top: 5rem;
+    width: auto;
+    right: 0;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 }
 
 //lg

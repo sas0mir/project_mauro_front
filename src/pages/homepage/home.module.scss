@@ -1,0 +1,88 @@
+@use '../../variables' as vars;
+
+.homepage {
+    height: 100vh;
+}
+
+.homepage_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding: 2rem;
+    // border: 3px solid;
+    img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+    .homepage_container_content {
+        padding-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.homepage_bg_default {
+    .homepage_container{
+        background-color: vars.$color-background-default;
+        color: vars.$color-text-default;
+    }
+    * {
+        color: vars.$color-text-default;
+        border-color: vars.$color-borders-default;
+    }
+}
+.homepage_bg_earth {
+    .homepage_container {
+        background-color: vars.$color-background-earth;
+        color: vars.$color-text-earth;
+    }
+    * {
+        border-color: vars.$color-borders-earth;
+        color: vars.$color-text-earth;
+    }
+}
+.homepage_bg_vintage {
+    .homepage_container {
+        background-color: vars.$color-background-vintage;
+        color: vars.$color-text-vintage;
+    }
+    * {
+        border-color: vars.$color-borders-vintage;
+        color: vars.$color-text-vintage;
+    }
+}
+.homepage_bg_cosmic {
+    .homepage_container {
+        background-color: vars.$color-background-cosmic;
+        color: vars.$color-text-cosmic;
+    }
+    * {
+        border-color: vars.$color-borders-cosmic;
+        color: vars.$color-text-cosmic;
+    }
+}
+.homepage_bg_warm {
+    .homepage_container {
+        background-color: vars.$color-background-warm;
+        color: vars.$color-text-warm;
+    }
+    * {
+        border-color: vars.$color-borders-warm;
+        color: vars.$color-text-warm;
+    }
+}
+.homepage_bg_modern {
+    .homepage_container {
+        background-color: vars.$color-background-modern;
+        color: vars.$color-text-modern;
+    }
+    * {
+        border-color: vars.$color-borders-modern;
+        color: vars.$color-text-modern;
+    }
+}

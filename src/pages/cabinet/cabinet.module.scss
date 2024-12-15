@@ -1,24 +1,32 @@
 @use '../../variables' as vars;
 
-.settings_page {
+.cabinet_page {
     height: 100vh;
-    padding: 2rem;
-    h3 {
-        font-size: 2rem;
-        font-weight: 600;
-        text-transform: uppercase;
-    }
 }
-.settings_container {
-    font-size: 2rem;
-    padding: 1rem;
-    select {
-        font-size: 2rem;
+
+.cabinet_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding: 2rem;
+    // border: 3px solid;
+    img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+    }
+    .cabinet_container_content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        p {
+            font-size: 2rem;
+        }
     }
 }
 
-.settings_bg_default {
-    .settings_container{
+.cabinet_bg_default {
+    .cabinet_container{
         background-color: vars.$color-background-default;
         color: vars.$color-text-default;
     }
@@ -27,9 +35,9 @@
         border-color: vars.$color-borders-default;
     }
 }
-.settings_bg_earth {
-    .settings_container {
-        background-color: vars.$color-nav-earth;
+.cabinet_bg_earth {
+    .cabinet_container {
+        background-color: vars.$color-background-earth;
         color: vars.$color-text-earth;
     }
     * {
@@ -37,9 +45,9 @@
         color: vars.$color-text-earth;
     }
 }
-.settings_bg_vintage {
-    .settings_container {
-        background-color: vars.$color-nav-vintage;
+.cabinet_bg_vintage {
+    .cabinet_container {
+        background-color: vars.$color-background-vintage;
         color: vars.$color-text-vintage;
     }
     * {
@@ -47,9 +55,9 @@
         color: vars.$color-text-vintage;
     }
 }
-.settings_bg_cosmic {
-    .settings_container {
-        background-color: vars.$color-nav-cosmic;
+.cabinet_bg_cosmic {
+    .cabinet_container {
+        background-color: vars.$color-background-cosmic;
         color: vars.$color-text-cosmic;
     }
     * {
@@ -57,9 +65,9 @@
         color: vars.$color-text-cosmic;
     }
 }
-.settings_bg_warm {
-    .settings_container {
-        background-color: vars.$color-nav-warm;
+.cabinet_bg_warm {
+    .cabinet_container {
+        background-color: vars.$color-background-warm;
         color: vars.$color-text-warm;
     }
     * {
@@ -67,9 +75,9 @@
         color: vars.$color-text-warm;
     }
 }
-.settings_bg_modern {
-    .settings_container {
-        background-color: vars.$color-nav-modern;
+.cabinet_bg_modern {
+    .cabinet_container {
+        background-color: vars.$color-background-modern;
         color: vars.$color-text-modern;
     }
     * {

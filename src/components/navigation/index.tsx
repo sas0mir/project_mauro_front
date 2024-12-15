@@ -9,11 +9,19 @@ import { FaTimes, FaAlignJustify, FaRegUser } from "react-icons/fa"
 function Navigation() {
 
     const [navClick, setNavClick] = useState(false);
+    const [showUMenu, setShowUMenu] = useState(false);
     const theme = useSelector((state: RootState) => state.settings.theme);
     const baseUrl = import.meta.env.VITE_RELATIVE_BASE_URL || '';
 
     const handleNavClick = () => {
       setNavClick(!navClick);
+      if (navigator.vibrate) {
+        navigator.vibrate(50);
+      }
+    }
+
+    const handleUMenuClick = () => {
+      setShowUMenu(!showUMenu);
       if (navigator.vibrate) {
         navigator.vibrate(50);
       }
@@ -51,7 +59,7 @@ function Navigation() {
                       }
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}>Home</li>
+                      <li className={styles.navbar_drop_list_item}>Pagina principale</li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/lib`}
@@ -71,19 +79,66 @@ function Navigation() {
                     >
                       <li className={styles.navbar_drop_list_item}>Video</li>
                     </NavLink>
+                </ul>
+            </div>
+        </>
+    )
+
+    const uMenuContent = (
+      <div className={classNames(
+        styles.umenu_drop_container,
+        {
+          [styles.nav_bg_default]: theme === 'default',
+          [styles.nav_bg_earth]: theme === 'earth',
+          [styles.nav_bg_vintage]: theme === 'vintage',
+          [styles.nav_bg_cosmic]: theme === 'cosmic',
+          [styles.nav_bg_warm]: theme === 'warm',
+          [styles.nav_bg_modern]: theme === 'modern'
+        }
+        )}>
+          <ul className={classNames(
+                  styles.navbar_drop_list,
+                  {
+                    [styles.nav_border_default]: theme === 'default',
+                    [styles.nav_border_earth]: theme === 'earth',
+                    [styles.nav_border_vintage]: theme === 'vintage',
+                    [styles.nav_border_cosmic]: theme === 'cosmic',
+                    [styles.nav_border_warm]: theme === 'warm',
+                    [styles.nav_border_modern]: theme === 'modern'
+                  }
+                  )}>
+                    <NavLink
+                      to={`${baseUrl}/cabinet`}
+                      onClick={handleUMenuClick}
+                      className={({ isActive }) => {
+                        return isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}>Pagina personale</li>
+                    </NavLink>
                     <NavLink
                       to={`${baseUrl}/settings`}
-                      onClick={handleNavClick}
+                      onClick={handleUMenuClick}
                       className={({ isActive }) =>
                         isActive ? styles.navigation_link_active : styles.navigation_link
                       }
                     >
                       <li className={styles.navbar_drop_list_item}>Impostazioni</li>
                     </NavLink>
+                    <NavLink
+                      to={`${baseUrl}/login`}
+                      onClick={handleUMenuClick}
+                      className={({ isActive }) =>
+                        isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}>Accedi</li>
+                    </NavLink>
                 </ul>
-            </div>
-        </>
+        </div>
     )
+
   return (
     <nav className={classNames(
       styles.navigation_container,
@@ -103,7 +158,7 @@ function Navigation() {
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
         >
-          Home
+          Pagina principale
         </NavLink>
         <NavLink
           to={`${baseUrl}/lib`}
@@ -121,17 +176,10 @@ function Navigation() {
         >
           Video
         </NavLink>
-        <NavLink
-          to={`${baseUrl}/settings`}
-          className={({ isActive }) =>
-            isActive ? styles.navigation_link_active : styles.navigation_link
-          }
-        >
-          Impostazioni
-        </NavLink>
       </div>
       
       {navClick && dropContent}
+      {showUMenu && uMenuContent}
 
       <button className={classNames(
       styles.navigation_btn,
@@ -156,7 +204,7 @@ function Navigation() {
           [styles.nav_border_warm]: theme === 'warm',
           [styles.nav_border_modern]: theme === 'modern'
         }
-        )}>
+        )} onClick={handleUMenuClick}>
         {/* тут аватарка юзера c выпадающим меню или иконка если нет */}
         <FaRegUser />
       </div>
