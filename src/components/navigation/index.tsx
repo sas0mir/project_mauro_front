@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../store/store'
 import { NavLink } from 'react-router'
 import styles from './navigation.module.scss'
 import classNames from 'classnames'
 import { FaTimes, FaAlignJustify, FaRegUser } from "react-icons/fa"
+import { useClickOutside } from '../../hooks/useClickOutsideHook'
 
 function Navigation() {
 
@@ -12,6 +13,12 @@ function Navigation() {
     const [showUMenu, setShowUMenu] = useState(false);
     const theme = useSelector((state: RootState) => state.settings.theme);
     const baseUrl = import.meta.env.VITE_RELATIVE_BASE_URL || '';
+    const dropMenuRef = useRef<HTMLDivElement>(null)
+
+    useClickOutside(dropMenuRef, () => {
+      console.log('WORK->', navClick);
+      //setNavClick(false)
+    })
 
     const handleNavClick = () => {
       setNavClick(!navClick);
@@ -39,7 +46,7 @@ function Navigation() {
                 [styles.nav_bg_warm]: theme === 'warm',
                 [styles.nav_bg_modern]: theme === 'modern'
               }
-              )}>
+              )} ref={dropMenuRef}>
                 <ul className={classNames(
                   styles.navbar_drop_list,
                   {
@@ -177,9 +184,6 @@ function Navigation() {
           Video
         </NavLink>
       </div>
-      
-      {navClick && dropContent}
-      {showUMenu && uMenuContent}
 
       <button className={classNames(
       styles.navigation_btn,
@@ -208,6 +212,8 @@ function Navigation() {
         {/* тут аватарка юзера c выпадающим меню или иконка если нет */}
         <FaRegUser />
       </div>
+      {navClick && dropContent}
+      {showUMenu && uMenuContent}
     </nav>
   )
 }

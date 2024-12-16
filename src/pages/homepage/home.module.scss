@@ -20,8 +20,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        overflow: auto;
         p {
             font-size: 1.5rem;
+        }
+        h3 {
+            
         }
     }
 }

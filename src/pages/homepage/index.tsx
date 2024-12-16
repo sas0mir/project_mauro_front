@@ -27,14 +27,42 @@ function Homepage() {
       <div className={styles.homepage_container}>
         <img src='https://www.unionecoros.it/perledelcoros/wp-content/uploads/2022/06/Chiesa-di-San-Pietro-17.jpg' />
         <div className={styles.homepage_container_content}>
-            <p>Novita</p>
+            <h3>Nuova chiesa</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet quo provident ducimus facere quod nulla vitae atque inventore laborum? Exercitationem ipsam eos, veniam deserunt aliquid eum delectus amet? Obcaecati!</p>
         </div>
       </div>
       <div className={styles.homepage_container}>
         <img src='https://scuolasvizzera.it/wp-content/uploads/2022/06/DSCF6893-small-min-scaled.jpg' />
         <div className={styles.homepage_container_content}>
-            <p>Novita</p>
+            <h3>Andiamo a scuola</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet quo provident ducimus facere quod nulla vitae atque inventore laborum? Exercitationem ipsam eos, veniam deserunt aliquid eum delectus amet? Obcaecati!</p>
+        </div>
+      </div>
+      <div className={styles.homepage_container}>
+        <img src='https://www.unionecoros.it/perledelcoros/wp-content/uploads/2022/06/Chiesa-di-San-Pietro-17.jpg' />
+        <div className={styles.homepage_container_content}>
+            <h3>Nuova chiesa</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet quo provident ducimus facere quod nulla vitae atque inventore laborum? Exercitationem ipsam eos, veniam deserunt aliquid eum delectus amet? Obcaecati!</p>
+        </div>
+      </div>
+      <div className={styles.homepage_container}>
+        <img src='https://scuolasvizzera.it/wp-content/uploads/2022/06/DSCF6893-small-min-scaled.jpg' />
+        <div className={styles.homepage_container_content}>
+            <h3>Andiamo a scuola</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet quo provident ducimus facere quod nulla vitae atque inventore laborum? Exercitationem ipsam eos, veniam deserunt aliquid eum delectus amet? Obcaecati!</p>
+        </div>
+      </div>
+      <div className={styles.homepage_container}>
+        <img src='https://www.unionecoros.it/perledelcoros/wp-content/uploads/2022/06/Chiesa-di-San-Pietro-17.jpg' />
+        <div className={styles.homepage_container_content}>
+            <h3>Nuova chiesa</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet quo provident ducimus facere quod nulla vitae atque inventore laborum? Exercitationem ipsam eos, veniam deserunt aliquid eum delectus amet? Obcaecati!</p>
+        </div>
+      </div>
+      <div className={styles.homepage_container}>
+        <img src='https://scuolasvizzera.it/wp-content/uploads/2022/06/DSCF6893-small-min-scaled.jpg' />
+        <div className={styles.homepage_container_content}>
+            <h3>Andiamo a scuola</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam amet quo provident ducimus facere quod nulla vitae atque inventore laborum? Exercitationem ipsam eos, veniam deserunt aliquid eum delectus amet? Obcaecati!</p>
         </div>
       </div>
