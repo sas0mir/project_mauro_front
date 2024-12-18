@@ -1,24 +1,29 @@
-import { RefObject, useEffect, useRef } from 'react'
+import { RefObject, useEffect, useRef, useCallback } from 'react'
 
 export const useClickOutside = (
-  elementRef: RefObject<Element>,
-  callback: () => void,
+    isOpened: boolean,
+    elementRef: RefObject<Element>,
+    callback: () => void,
 ) => {
 
     const callbackRef = useRef<() => void>();
     callbackRef.current = callback;
 
-  const handleClick = (event: MouseEvent) => {
-    if (!elementRef?.current?.contains(event.target as Element) && callbackRef.current) {
-      callbackRef.current();
-    }
-  }
+    const handleClick = useCallback((event: MouseEvent) => {
+        if (!elementRef?.current?.contains(event.target as Element) && callbackRef.current) {
+        callbackRef.current();
+        }
+    }, [elementRef])
 
-  useEffect(() => {
-    document.addEventListener('click', handleClick)
+    useEffect(() => {
+        if (isOpened) document.addEventListener('click', handleClick)
+    }, [handleClick, isOpened])
 
-    return () => {
-      document.removeEventListener('click', handleClick)
-    }
-  })
+    useEffect(() => {
+        // document.addEventListener('click', handleClick)
+
+        return () => {
+        document.removeEventListener('click', handleClick)
+        }
+    })
 }

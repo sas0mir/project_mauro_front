@@ -8,15 +8,16 @@
     display: flex;
     justify-content: space-between;
     margin: 2rem;
-    padding: 2rem;
+    // padding: 2rem;
     // border: 3px solid;
     img {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
+        // border-radius: 50%;
+        object-fit: cover;
+        width: 30%;
+        height: auto;
     }
     .homepage_container_content {
-        padding-left: 1rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -25,7 +26,7 @@
             font-size: 1.5rem;
         }
         h3 {
-            
+
         }
     }
 }

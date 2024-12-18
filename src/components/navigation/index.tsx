@@ -1,10 +1,15 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../store/store'
 import { NavLink } from 'react-router'
 import styles from './navigation.module.scss'
 import classNames from 'classnames'
 import { FaTimes, FaAlignJustify, FaRegUser } from "react-icons/fa"
+import { PiHouseLineBold } from "react-icons/pi";
+import { GrGroup } from "react-icons/gr";
+import { LiaUserFriendsSolid } from "react-icons/lia";
+import { LuMessageSquare, LuLibrary } from "react-icons/lu";
+import { MdOutlineOndemandVideo } from "react-icons/md";
 import { useClickOutside } from '../../hooks/useClickOutsideHook'
 
 function Navigation() {
@@ -15,7 +20,13 @@ function Navigation() {
     const baseUrl = import.meta.env.VITE_RELATIVE_BASE_URL || '';
     const dropMenuRef = useRef<HTMLDivElement>(null)
 
-    useClickOutside(dropMenuRef, () => {
+    useEffect(() => {
+      if (navClick) {
+        console.log('123')
+      }
+    }, [navClick, showUMenu])
+
+    useClickOutside(navClick, dropMenuRef, () => {
       console.log('WORK->', navClick);
       //setNavClick(false)
     })
@@ -66,7 +77,37 @@ function Navigation() {
                       }
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}>Pagina principale</li>
+                      <li className={styles.navbar_drop_list_item}><PiHouseLineBold /> Pagina principale</li>
+                    </NavLink>
+                    <NavLink
+                      to={`${baseUrl}/groups`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) => {
+                        return isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}><GrGroup /> Comunità</li>
+                    </NavLink>
+                    <NavLink
+                      to={`${baseUrl}/friends`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) => {
+                        return isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}><LiaUserFriendsSolid /> Amici</li>
+                    </NavLink>
+                    <NavLink
+                      to={`${baseUrl}/messages`}
+                      onClick={handleNavClick}
+                      className={({ isActive }) => {
+                        return isActive ? styles.navigation_link_active : styles.navigation_link
+                      }
+                      }
+                    >
+                      <li className={styles.navbar_drop_list_item}><LuMessageSquare /> Messagi</li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/lib`}
@@ -75,7 +116,7 @@ function Navigation() {
                         isActive ? styles.navigation_link_active : styles.navigation_link
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}>Biblioteca</li>
+                      <li className={styles.navbar_drop_list_item}><LuLibrary /> Biblioteca</li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/vid`}
@@ -84,7 +125,7 @@ function Navigation() {
                         isActive ? styles.navigation_link_active : styles.navigation_link
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}>Video</li>
+                      <li className={styles.navbar_drop_list_item}><MdOutlineOndemandVideo /> Video</li>
                     </NavLink>
                 </ul>
             </div>
@@ -165,7 +206,35 @@ function Navigation() {
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
         >
+          <PiHouseLineBold />
           Pagina principale
+        </NavLink>
+        <NavLink
+          to={`${baseUrl}/groups`}
+          className={({ isActive }) =>
+            isActive ? styles.navigation_link_active : styles.navigation_link
+          }
+        >
+          <GrGroup />
+          Comunità
+        </NavLink>
+        <NavLink
+          to={`${baseUrl}/friends`}
+          className={({ isActive }) =>
+            isActive ? styles.navigation_link_active : styles.navigation_link
+          }
+        >
+          <LiaUserFriendsSolid />
+          Amici
+        </NavLink>
+        <NavLink
+          to={`${baseUrl}/messages`}
+          className={({ isActive }) =>
+            isActive ? styles.navigation_link_active : styles.navigation_link
+          }
+        >
+          <LuMessageSquare />
+          Messaggi
         </NavLink>
         <NavLink
           to={`${baseUrl}/lib`}
@@ -173,6 +242,7 @@ function Navigation() {
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
         >
+          <LuLibrary />
           Biblioteca
         </NavLink>
         <NavLink
@@ -181,6 +251,7 @@ function Navigation() {
             isActive ? styles.navigation_link_active : styles.navigation_link
           }
         >
+          <MdOutlineOndemandVideo />
           Video
         </NavLink>
       </div>
