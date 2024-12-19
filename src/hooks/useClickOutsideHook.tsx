@@ -1,7 +1,6 @@
 import { RefObject, useEffect, useRef, useCallback } from 'react'
 
 export const useClickOutside = (
-    isOpened: boolean,
     elementRef: RefObject<Element>,
     callback: () => void,
 ) => {
@@ -16,11 +15,7 @@ export const useClickOutside = (
     }, [elementRef])
 
     useEffect(() => {
-        if (isOpened) document.addEventListener('click', handleClick)
-    }, [handleClick, isOpened])
-
-    useEffect(() => {
-        // document.addEventListener('click', handleClick)
+        document.addEventListener('click', handleClick)
 
         return () => {
         document.removeEventListener('click', handleClick)

@@ -10,7 +10,6 @@ import { GrGroup } from "react-icons/gr";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { LuMessageSquare, LuLibrary } from "react-icons/lu";
 import { MdOutlineOndemandVideo } from "react-icons/md";
-import { useClickOutside } from '../../hooks/useClickOutsideHook'
 
 function Navigation() {
 
@@ -18,18 +17,48 @@ function Navigation() {
     const [showUMenu, setShowUMenu] = useState(false);
     const theme = useSelector((state: RootState) => state.settings.theme);
     const baseUrl = import.meta.env.VITE_RELATIVE_BASE_URL || '';
-    const dropMenuRef = useRef<HTMLDivElement>(null)
+    const dropMenuRef = useRef<HTMLDivElement>(null);
+    const uMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
       if (navClick) {
-        console.log('123')
+        document.addEventListener("mousedown", handleDropClickOutside);
+      } else {
+        document.removeEventListener("mousedown", handleDropClickOutside);
       }
-    }, [navClick, showUMenu])
+      return () => {
+        document.removeEventListener("mousedown", handleDropClickOutside);
+      };
+    }, [navClick]);
 
-    useClickOutside(navClick, dropMenuRef, () => {
-      console.log('WORK->', navClick);
-      //setNavClick(false)
-    })
+    useEffect(() => {
+      if (showUMenu) {
+        document.addEventListener("mousedown", handleUMenuClickOutside);
+      } else {
+        document.removeEventListener("mousedown", handleUMenuClickOutside);
+      }
+      return () => {
+        document.removeEventListener("mousedown", handleUMenuClickOutside);
+      };
+    }, [showUMenu]);
+
+    const handleDropClickOutside = (event: MouseEvent) => {
+      if (
+        dropMenuRef.current &&
+        !dropMenuRef.current.contains(event.target as Node)
+      ) {
+        setNavClick(false);
+      }
+    };
+
+    const handleUMenuClickOutside = (event: MouseEvent) => {
+      if (
+        uMenuRef.current &&
+        !uMenuRef.current.contains(event.target as Node)
+      ) {
+        setShowUMenu(false);
+      }
+    };
 
     const handleNavClick = () => {
       setNavClick(!navClick);
@@ -143,7 +172,7 @@ function Navigation() {
           [styles.nav_bg_warm]: theme === 'warm',
           [styles.nav_bg_modern]: theme === 'modern'
         }
-        )}>
+        )} ref={uMenuRef}>
           <ul className={classNames(
                   styles.navbar_drop_list,
                   {
