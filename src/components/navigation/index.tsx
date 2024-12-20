@@ -10,6 +10,7 @@ import { GrGroup } from "react-icons/gr";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { LuMessageSquare, LuLibrary } from "react-icons/lu";
 import { MdOutlineOndemandVideo } from "react-icons/md";
+import Tooltip from '../tooltip'
 
 function Navigation() {
 
@@ -21,7 +22,7 @@ function Navigation() {
     const uMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-      if (navClick) {
+      if (navClick || showUMenu) {
         document.addEventListener("mousedown", handleDropClickOutside);
       } else {
         document.removeEventListener("mousedown", handleDropClickOutside);
@@ -29,31 +30,17 @@ function Navigation() {
       return () => {
         document.removeEventListener("mousedown", handleDropClickOutside);
       };
-    }, [navClick]);
-
-    useEffect(() => {
-      if (showUMenu) {
-        document.addEventListener("mousedown", handleUMenuClickOutside);
-      } else {
-        document.removeEventListener("mousedown", handleUMenuClickOutside);
-      }
-      return () => {
-        document.removeEventListener("mousedown", handleUMenuClickOutside);
-      };
-    }, [showUMenu]);
+    }, [navClick, showUMenu]);
 
     const handleDropClickOutside = (event: MouseEvent) => {
       if (
-        dropMenuRef.current &&
+        navClick && dropMenuRef.current &&
         !dropMenuRef.current.contains(event.target as Node)
       ) {
         setNavClick(false);
       }
-    };
-
-    const handleUMenuClickOutside = (event: MouseEvent) => {
       if (
-        uMenuRef.current &&
+        showUMenu && uMenuRef.current &&
         !uMenuRef.current.contains(event.target as Node)
       ) {
         setShowUMenu(false);
@@ -87,17 +74,7 @@ function Navigation() {
                 [styles.nav_bg_modern]: theme === 'modern'
               }
               )} ref={dropMenuRef}>
-                <ul className={classNames(
-                  styles.navbar_drop_list,
-                  {
-                    [styles.nav_border_default]: theme === 'default',
-                    [styles.nav_border_earth]: theme === 'earth',
-                    [styles.nav_border_vintage]: theme === 'vintage',
-                    [styles.nav_border_cosmic]: theme === 'cosmic',
-                    [styles.nav_border_warm]: theme === 'warm',
-                    [styles.nav_border_modern]: theme === 'modern'
-                  }
-                  )}>
+                <ul className={classNames(styles.navbar_drop_list, styles[`nav_border_${theme}`])}>
                     <NavLink
                       to={`${baseUrl}/main`}
                       onClick={handleNavClick}
@@ -106,7 +83,11 @@ function Navigation() {
                       }
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}><PiHouseLineBold /> Pagina principale</li>
+                      <li className={styles.navbar_drop_list_item}>
+                        <Tooltip text="Pagina principale" position='bottom'>
+                          <PiHouseLineBold />
+                        </Tooltip>
+                      </li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/groups`}
@@ -116,7 +97,11 @@ function Navigation() {
                       }
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}><GrGroup /> Comunità</li>
+                      <li className={styles.navbar_drop_list_item}>
+                        <Tooltip text="Comunità" position='bottom'>
+                          <GrGroup />
+                        </Tooltip>
+                      </li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/friends`}
@@ -126,7 +111,11 @@ function Navigation() {
                       }
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}><LiaUserFriendsSolid /> Amici</li>
+                      <li className={styles.navbar_drop_list_item}>
+                        <Tooltip text="Amici" position='top'>
+                          <LiaUserFriendsSolid />
+                        </Tooltip>
+                      </li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/messages`}
@@ -136,7 +125,11 @@ function Navigation() {
                       }
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}><LuMessageSquare /> Messagi</li>
+                      <li className={styles.navbar_drop_list_item}>
+                        <Tooltip text="Messagi" position='top'>
+                          <LuMessageSquare />
+                        </Tooltip>
+                      </li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/lib`}
@@ -145,7 +138,11 @@ function Navigation() {
                         isActive ? styles.navigation_link_active : styles.navigation_link
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}><LuLibrary /> Biblioteca</li>
+                      <li className={styles.navbar_drop_list_item}>
+                        <Tooltip text="Biblioteca" position='top'>
+                          <LuLibrary />
+                        </Tooltip>
+                      </li>
                     </NavLink>
                     <NavLink
                       to={`${baseUrl}/vid`}
@@ -154,7 +151,11 @@ function Navigation() {
                         isActive ? styles.navigation_link_active : styles.navigation_link
                       }
                     >
-                      <li className={styles.navbar_drop_list_item}><MdOutlineOndemandVideo /> Video</li>
+                      <li className={styles.navbar_drop_list_item}>
+                        <Tooltip text="Video" position='top'>
+                          <MdOutlineOndemandVideo />
+                        </Tooltip>
+                      </li>
                     </NavLink>
                 </ul>
             </div>

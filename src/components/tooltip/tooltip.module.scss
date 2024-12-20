@@ -1,0 +1,41 @@
+/* Контейнер для элемента с подсказкой */
+.tooltip_container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Блок подсказки */
+  .tooltip_box {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none; /* Убираем взаимодействие с подсказкой */
+  }
+  
+  /* Позиция сверху */
+  .tooltip_top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  
+  /* Позиция снизу */
+  .tooltip_bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+  }
+  
+  /* Видимая подсказка */
+  .tooltip_container:hover .tooltip_box {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }

@@ -2,6 +2,8 @@
 
 .homepage {
     height: 100vh;
+    text-align: center;
+    text-align: -webkit-center;
 }
 
 .homepage_container {
@@ -16,20 +18,71 @@
         width: 30%;
         height: auto;
     }
+    transition: all 100ms ease-out;
+    &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(1.05);
+        // opacity: .7;
+        cursor: pointer;
+    }
     .homepage_container_content {
         padding: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         overflow: auto;
-        p {
-            font-size: 1.5rem;
+        width: 70%;
+        p.homepage_feed_preview {
+            font-size: 1rem;
         }
-        h3 {
-
+        p.homepage_feed_footer {
+            font-size: 1rem;
+            text-align: right;
+        }
+        h4.homepage_feed_source {
+            font-size: 1rem;
+            font-weight: 400;
+            padding-bottom: 0.5rem;
+            text-align: left;
+        }
+        h2.homepage_feed_title {
+            font-size: 1.2rem;
+            padding-bottom: 0.5rem;
+            text-align: left;
         }
     }
 }
+
+.homepage_search_container {
+    position: relative;
+    display: inline-block;
+    width: 50%; /* Ширина контейнера (настраиваемая) */
+    max-width: 600px; /* Ограничение ширины */
+    margin-top: 2rem;
+    svg {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        pointer-events: none; /* Иконка не будет мешать взаимодействию с инпутом */
+        color: #888;
+    }
+  }
+  
+  .homepage_search_input {
+    width: 100%;
+    padding: 1rem; /* Учитываем место для иконки */
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    &:focus {
+        border-color: vars.$color-borders-default;
+    }
+  }
 
 .homepage_bg_default {
     .homepage_container{
@@ -89,5 +142,40 @@
     * {
         border-color: vars.$color-borders-modern;
         color: vars.$color-text-modern;
+    }
+}
+
+//lg
+@media (min-width: 1024px) {
+    .homepage {
+        text-align: center;
+        text-align: -webkit-center;
+    }
+    .homepage_container {
+        max-width: 1200px;
+        .homepage_container_content {
+            width: 70%;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            overflow: auto;
+            p.homepage_feed_preview {
+                font-size: 1rem;
+            }
+            p.homepage_feed_footer {
+                font-size: 1rem;
+                text-align: end;
+            }
+            h4.homepage_feed_source {
+                font-size: 1rem;
+                font-weight: 400;
+                padding-bottom: 0.5rem;
+            }
+            h2.homepage_feed_title {
+                font-size: 1.2rem;
+                padding-bottom: 0.5rem;
+            }
+        }
     }
 }
