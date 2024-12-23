@@ -53,28 +53,36 @@
     }
 }
 
+.homepage_controls {
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
 .homepage_search_container {
     position: relative;
     display: inline-block;
-    width: 50%; /* Ширина контейнера (настраиваемая) */
-    max-width: 600px; /* Ограничение ширины */
-    margin-top: 2rem;
+    // width: 50%;
+    max-width: 600px;
     svg {
         position: absolute;
         top: 50%;
-        right: 10px;
+        right: 20px;
         transform: translateY(-50%);
         width: 20px;
         height: 20px;
-        pointer-events: none; /* Иконка не будет мешать взаимодействию с инпутом */
+        pointer-events: none;
         color: #888;
     }
   }
   
-  .homepage_search_input {
-    width: 100%;
-    padding: 1rem; /* Учитываем место для иконки */
-    border: 1px solid #ccc;
+.homepage_search_input {
+    // width: 100%;
+    padding: 1rem;
+    border: 1px solid vars.$color-borders-default;
     border-radius: 2rem;
     font-size: 16px;
     outline: none;
@@ -82,7 +90,48 @@
     &:focus {
         border-color: vars.$color-borders-default;
     }
-  }
+}
+
+.homepage_controls_btn {
+    position: relative;
+    margin-left: 1rem;
+    padding: 1rem;
+    display: block;
+    background-color: inherit;
+    border: 3px solid vars.$color-borders-default;
+    border-radius: 50%;
+    height: 100%;
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+    transition: all 100ms ease-out;
+    &:hover {
+        transition: all 100ms ease-in;
+        transform: scale(1.05);
+        // opacity: .7;
+        cursor: pointer;
+    }
+}
+
+.homepage_border_default {
+    border-color: vars.$color-borders-default;
+}
+.homepage_border_earth {
+    border-color: vars.$color-borders-earth;
+}
+.homepage_border_vintage {
+    border-color: vars.$color-borders-vintage;
+}
+.homepage_border_cosmic {
+    border-color: vars.$color-borders-cosmic;
+}
+.homepage_border_warm {
+    border-color: vars.$color-borders-warm;
+}
+.homepage_border_modern {
+    border-color: vars.$color-borders-modern;
+}
 
 .homepage_bg_default {
     .homepage_container{
@@ -92,6 +141,9 @@
     * {
         color: vars.$color-text-default;
         border-color: vars.$color-borders-default;
+    }
+    .homepage_controls_btn svg, path {
+        color: vars.$color-elements-default !important;
     }
 }
 .homepage_bg_earth {
@@ -103,6 +155,9 @@
         border-color: vars.$color-borders-earth;
         color: vars.$color-text-earth;
     }
+    .homepage_controls_btn svg, path {
+        color: vars.$color-elements-earth !important;
+    }
 }
 .homepage_bg_vintage {
     .homepage_container {
@@ -112,6 +167,9 @@
     * {
         border-color: vars.$color-borders-vintage;
         color: vars.$color-text-vintage;
+    }
+    .homepage_controls_btn svg, path {
+        color: vars.$color-elements-vintage !important;
     }
 }
 .homepage_bg_cosmic {
@@ -123,6 +181,9 @@
         border-color: vars.$color-borders-cosmic;
         color: vars.$color-text-cosmic;
     }
+    .homepage_controls_btn svg, path {
+        color: vars.$color-elements-cosmic !important;
+    }
 }
 .homepage_bg_warm {
     .homepage_container {
@@ -133,6 +194,9 @@
         border-color: vars.$color-borders-warm;
         color: vars.$color-text-warm;
     }
+    .homepage_controls_btn svg, path {
+        color: vars.$color-elements-warm !important;
+    }
 }
 .homepage_bg_modern {
     .homepage_container {
@@ -142,6 +206,9 @@
     * {
         border-color: vars.$color-borders-modern;
         color: vars.$color-text-modern;
+    }
+    .homepage_controls_btn svg, path {
+        color: vars.$color-elements-modern !important;
     }
 }
 
