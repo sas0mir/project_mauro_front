@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import type { RootState } from '../../store/store'
 import dayjs from 'dayjs'
 import Tooltip from '../../components/tooltip'
-import { FaSearch, FaPlus } from "react-icons/fa";
+import { FaSearch, FaPlus, FaRegHeart, FaRegCommentDots } from "react-icons/fa";
 import Modal from '../../components/modal'
 
 function Homepage() {
@@ -13,6 +13,23 @@ function Homepage() {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
   const theme = useSelector((state: RootState) => state.settings.theme);
   const mockNewsData = useSelector((state: RootState) => state.homepageData.newsFeed);
+
+  const likesAndComments = (likes: {userId: number, username: string}[], comments: {userId: number, username: string, text: string}[]) => {
+    return <div className={classNames(styles.homepage_feed_likes, styles[`feed_likes_${theme}`])}>
+      <Tooltip text={likes.map(like => like.username).join(',\n')} position='top'>
+        <div className={styles.homepage_feed_likes_item}>
+          <FaRegHeart />
+          <span>{likes.length}</span>
+        </div>
+      </Tooltip>
+      <Tooltip text={comments.map(com => com.username).join(',\n')} position='top'>
+        <div className={styles.homepage_feed_likes_item}>
+          <FaRegCommentDots />
+          <span>{comments.length}</span>
+        </div>
+      </Tooltip>
+    </div>
+  }
 
   return (
     <div className={classNames(styles.homepage, styles[`homepage_bg_${theme}`])}>
@@ -41,6 +58,7 @@ function Homepage() {
               <p className={styles.homepage_feed_preview}>{dItem.content.substring(0, 50) + '...'}</p>
               <p className={styles.homepage_feed_footer}>{`${dayjs(dItem.date).format('DD.MM.YYYY')}${dItem.author ? ' | ' + dItem.author : ''}`}</p>
           </div>
+          {likesAndComments(dItem.likes, dItem.comments)}
         </div>
         }) : null}
         <Modal isOpen={showCreatePostModal} onClose={() => setShowCreatePostModal(false)}>

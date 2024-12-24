@@ -7,6 +7,7 @@
 }
 
 .homepage_container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     margin: 2rem;
@@ -111,6 +112,31 @@
         transform: scale(1.05);
         // opacity: .7;
         cursor: pointer;
+    }
+}
+
+.homepage_feed_likes {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 45%;
+    min-width: 5%;
+    display: flex;
+    justify-content: center;
+    background-color: inherit;
+    border-radius: 2rem;
+}
+
+.homepage_feed_likes_item {
+    font-size: 18px;
+    padding: 0.5rem;
+    // border: 3px solid vars.$color-borders-default;
+    // border-radius: 2rem;
+    svg {
+
+    }
+    span {
+        margin-left: 0.5rem;
+        font-size: 14px;
     }
 }
 
