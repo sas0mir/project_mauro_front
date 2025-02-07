@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import ReactDOM from 'react-dom';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { IModalProps } from './modal.props';
 import { IoClose } from "react-icons/io5";
 
-const Modal: FC<IModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: FC<IModalProps> = memo(({ isOpen, onClose, children }) => {
 
     const theme = useSelector((state: RootState) => state.settings.theme);
 
@@ -24,6 +24,6 @@ const Modal: FC<IModalProps> = ({ isOpen, onClose, children }) => {
         </div>,
         document.body
     );
-};
+});
 
 export default Modal;

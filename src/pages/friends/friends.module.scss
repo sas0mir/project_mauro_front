@@ -1,0 +1,14 @@
+.friend_container {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    background-color: azure;
+    padding: 1rem;
+    img {
+        height: 3rem;
+        width: 3rem;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+}

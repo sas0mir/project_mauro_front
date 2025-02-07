@@ -76,7 +76,7 @@ function Navigation() {
               )} ref={dropMenuRef}>
                 <ul className={classNames(styles.navbar_drop_list, styles[`nav_border_${theme}`])}>
                     <NavLink
-                      to={`${baseUrl}/main`}
+                      to={`${baseUrl}/`}
                       onClick={handleNavClick}
                       className={({ isActive }) => {
                         return isActive ? styles.navigation_link_active : styles.navigation_link
@@ -231,7 +231,7 @@ function Navigation() {
     )}>
       <div className={styles.navigation_links}>
         <NavLink
-          to={`${baseUrl}/main`}
+          to={`${baseUrl}/`}
           className={({ isActive }) => 
             isActive ? styles.navigation_link_active : styles.navigation_link
           }

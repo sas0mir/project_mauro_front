@@ -1,0 +1,15 @@
+.messages_container {
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    aside.messages_left {
+        padding: 1rem;
+        display: block;
+        p {
+            padding: 1rem;
+            font-size: 2rem;
+        }
+    }
+}
