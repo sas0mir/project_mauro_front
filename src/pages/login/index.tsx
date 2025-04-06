@@ -3,6 +3,7 @@ import styles from './login.module.scss'
 //import { useSelector } from 'react-redux'
 //import type { RootState } from '../../store/store'
 import { useForm, SubmitHandler} from 'react-hook-form'
+import LoginBackground from './login_background'
 
 function Loginpage() {
   //const theme = useSelector((state: RootState) => state.settings.theme);
@@ -29,6 +30,7 @@ function Loginpage() {
     };
     return (
         <div className={styles.login_container}>
+            <LoginBackground />
             <p className={styles.login_title}>Modulo di accesso</p>
             <form className={styles.login_form} onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" placeholder='nome' {...register("firstName", { required: true })} />

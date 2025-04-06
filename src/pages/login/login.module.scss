@@ -3,6 +3,7 @@
     display: block;
     align-self: center;
     width: 90vw;
+    height: 100vh;
     margin: 2rem;
 }
 .login_title {
@@ -21,7 +22,7 @@
     flex-direction: column;
     margin: auto;
     padding: 1rem;
-    background-color: slategrey;
+    background-color: rgba(112, 128, 144, 0.163);
     input {
         max-width: 500px;
         padding: 1rem;
@@ -29,3 +30,48 @@
         margin: 2rem auto;
     }
 }
+
+// background animation
+.auth_bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .bg_row {
+    display: flex;
+    animation: scroll-row 20s linear infinite;
+    gap: 10px;
+  }
+  
+  .bg_img {
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    min-width: 120px;
+    flex-shrink: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: transform 0.2s ease;
+    filter: blur(1.5px);
+    opacity: 0.6;
+
+    &:hover {
+      transform: scale(1.05);
+      filter: blur(0.5px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scroll-row {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

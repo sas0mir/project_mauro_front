@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import settingsReducer from '../slices/settingsSlice'
 import homepageDataReducer from '../slices/homepageDataSlice';
+import metaReducer from '../slices/metaSlice';
 
 export const store =  configureStore({
     reducer: {
         settings: settingsReducer,
-        homepageData: homepageDataReducer
+        homepageData: homepageDataReducer,
+        meta: metaReducer,
     },
 })
 
