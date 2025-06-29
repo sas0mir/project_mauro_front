@@ -1,2 +1,2 @@
-import Homepage from '../pages/homepage'
+import Homepage from './homepage'
 export default Homepage
