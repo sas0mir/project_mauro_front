@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import Homepage from './homepage'
 import LoginPage from './login'
 import { useEffect, useState } from 'react'
